@@ -4,5 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/HW1-Part1" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="w3" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
   </component>
 </module>

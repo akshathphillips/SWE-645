@@ -1,41 +1,177 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!DOCTYPE html>
+<html lang="">
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
+  <title>Akshath Phillips - SWE 645</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: "Montserrat", sans-serif
+    }
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+    .w3-row-padding img {
+      margin-bottom: 12px
+    }
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {
+      width: 120px;
+      background: #222;
+    }
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {
+      margin-left: 120px
+    }
 
-  <meta name="theme-color" content="#fafafa">
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {
+      #main {
+        margin-left: 0
+      }
+    }
+  </style>
 </head>
+<body class="w3-black">
 
-<body>
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <!--  <img src="/w3images/avatar_smoke.jpg" style="width:100%">-->
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#homework" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-university w3-xxlarge"></i>
+    <p>HOMEWORK</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+</nav>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Akshath Phillips.</h1>
+    <p>Software Architect.</p>
+    <img src="img/akshath_img.jpg" alt="boy" class="w3-image" width="992" height="1108">
+  </header>
+
+  <!-- Homework Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="homework">
+    <h2 class="w3-text-light-grey">Homework Assignments</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>Please find my homework assignments below</p>
+    <h4 class="w3-text-light-grey">Assignment 1</h4>
+    <table class="w3-table w3-bordered w3-text-light-grey">
+      <tr>
+        <th>Part</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Source code</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Student Class Web page</td>
+        <td>
+          <ol>
+            <li><a href="" target="_blank">S3 Link</a>
+            </li>
+          </ol>
+        </td>
+        <td>
+          <a href="https://github.com/akshathphillips/SWE-645/tree/main/HW1-Part1" target="_blank">Github</a>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Dynamic Web Project, HTML5, CSS, Bootstrap</td>
+        <td>
+          <ol>
+            <li><a href="" target="_blank">CS Survey Page</a></li>
+          </ol>
+        </td>
+        <td>
+          <a href="https://github.com/akshathphillips/SWE-645/tree/main/HW1-Part2" target="_blank">Github</a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Homework Section -->
+  </div>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">My Name</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>
+      Hello! My name is Akshath, and I am a seasoned Software Architect with over 10 years of professional
+      experience in the industry. I hold a bachelor's degree in Electrical Engineering from Purdue
+      University and am currently working towards obtaining my Master's degree in Software Engineering at George Mason
+      University.</p>
+
+    <p>I'm proud to be a part of the software engineering team at Clarivate, where I serve as a Software Architect. My
+      role allows me to leverage my skills and experiences to design robust, scalable software solutions that solve
+      real-world problems.</p>
+
+    <p>When I'm not in the office, you'll find me mixing up both alcoholic and non-alcoholic cocktails, a hobby that
+      adds
+      a splash of creativity to my life. I'm also an active individual and enjoy participating in various sports. This
+      Fall, I'm especially excited to be playing Flag Football.</p>
+
+    <p>Four months ago, I embarked on a journey towards strength training. It's been a challenging but rewarding
+      experience, and I'm excited to see where this path will lead me in terms of physical and mental wellness.
+    </p>
+    <!-- End About Section -->
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-padding-16 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Contact Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Virginia, US</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +01 123-456-7890</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: aphill5@gmu.edu</p>
+    </div>
+    <br>
+    <p>Let's get in touch.
+      <a
+        href="mailto:aphill5@gmu.edu?subject=Contact%20Form%20Submission&body=Hello,%0D%0A%0D%0AI%20would%20like%20to%20contact%20you%20regarding...">Email
+        me.</a></p>
+    <!-- End Contact Section -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+                                       class="w3-hover-text-green">w3.css</a></p>
+    <!-- End footer -->
+  </footer>
+
+  <!-- END PAGE CONTENT -->
+</div>
+
 </body>
-
 </html>
