@@ -11,17 +11,10 @@ import java.io.IOException;
 @WebServlet(name = "SurveyServlet", urlPatterns = {"/SurveyServlet"})
 public class SurveyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // Retrieve form data
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        // Extract other form fields similarly
-
         // Handle Raffle numbers
         String raffleInput = request.getParameter("raffle");
         String[] raffleNumbers = raffleInput.split(",");
         boolean hasWon = checkForWinningNumber(raffleNumbers);
-
-        // Process other form data and perform any necessary operations
 
         // Forward to a result JSP page with alert message
         String alertMessage = hasWon ? "Congratulations! You won!" : "Thank you for submitting the survey.";
@@ -34,12 +27,11 @@ public class SurveyServlet extends HttpServlet {
             try {
                 int number = Integer.parseInt(numberStr.trim());
                 if (number % 2 == 0) {
-                    return true; // User has won
+                    return true;
                 }
-            } catch (NumberFormatException e) {
-                // Ignore invalid numbers in the raffle input
+            } catch (NumberFormatException ignored) {
             }
         }
-        return false; // User did not win
+        return false;
     }
 }

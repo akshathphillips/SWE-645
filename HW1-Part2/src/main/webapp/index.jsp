@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Survey Form</title>
+    <title>Student Survey Form - SWE 645 - Akshath Phillips</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <style>
@@ -25,6 +25,7 @@
 <div class="container p-4">
     <h1 class="gmu-green">Student Survey</h1>
     <h2 class="gmu-green">SWE 645 - HW1 - Part 2</h2>
+    <h3 class="gmu-green">Akshath Phillips</h3>
     <form action="SurveyServlet" method="post" class="needs-validation" novalidate>
         <div class="mb-3">
             <label for="first_name" class="form-label required-label">First Name</label>
@@ -172,6 +173,7 @@
         <!-- Submit and cancel buttons -->
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="button" class="btn btn-info">Back to Class page</button>
     </form>
 </div>
 <script src="bootstrap/js/bootstrap.min.js"></script>
