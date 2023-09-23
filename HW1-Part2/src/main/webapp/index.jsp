@@ -172,7 +172,7 @@
 
         <!-- Submit and cancel buttons -->
         <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="button" class="btn btn-secondary" onclick="cancelAndReload()">Cancel</button>
         <a href="http://gmu-swe-645-aphill5.s3-website-us-east-1.amazonaws.com" class="btn btn-dark mr-3">Back to
             Class Homepage</a>
     </form>
@@ -189,6 +189,11 @@
             form.classList.add('was-validated');
         }, false);
     });
+
+    function cancelAndReload() {
+        window.location.reload();
+        document.getElementById("first_name").focus();
+    }
 </script>
 
 <script>
