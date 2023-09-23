@@ -1,3 +1,10 @@
+# Requested information
+- Class homepage: http://gmu-swe-645-aphill5.s3-website-us-east-1.amazonaws.com
+   - Navigate to the "Homework" section
+   - You will see a table with heading "Assignment 1"
+   - Click on, and navigate to the survey link. Same as below
+- Survey page: http://ec2-52-90-71-203.compute-1.amazonaws.com:8080/HW1-Part2/
+
 # Deploying the CS Survey WAR on EC2
 
 This README.md file provides high-level steps to create an EC2 Linux 2, installing Tomcat, and deploying the WAR file. When creating an instance using the "Tomcat Certified by Bitnami" I was NOT able to connect to it both via SSH, and WinSCP.
@@ -25,9 +32,9 @@ Before you begin, ensure you have the following:
 4. **Configure Security Group**
    - Create a new security group or use an existing one.
    - Ensure that the security group allows inbound traffic on the following ports:
-     - SSH (Port 22) for secure shell access.
-     - HTTP (Port 80) for web traffic.
-     - HTTPS (Port 443) for secure web traffic.
+      - SSH (Port 22) for secure shell access.
+      - HTTP (Port 80) for web traffic.
+      - HTTPS (Port 443) for secure web traffic.
 
 5. **Create Key Pair**
    - If you don't have an existing key pair, select "Create a new key pair."
@@ -35,19 +42,19 @@ Before you begin, ensure you have the following:
    - Download the private key (.pem file) and keep it in a secure location.
 
 6. **Launch the Instance**
-    - Confirm your key pair selection and acknowledge that you have access to the private key.
-    - Click "Launch Instances."
+   - Confirm your key pair selection and acknowledge that you have access to the private key.
+   - Click "Launch Instances."
 
 7. **Access Your EC2 Instance**
-    - Once your instance is running, select it from the EC2 dashboard.
-    - Note the instance's public IP address or DNS name.
+   - Once your instance is running, select it from the EC2 dashboard.
+   - Note the instance's public IP address or DNS name.
 
 8. **SSH into the Instance**
-    - Open a terminal on your local machine.
-    - Use the following command to SSH into your EC2 instance, replacing `<your-instance-IP>` with the actual IP address:
-      ```
-      ssh -i /path/to/your-key-pair.pem ec2-user@<your-instance-IP>
-      ```
+   - Open a terminal on your local machine.
+   - Use the following command to SSH into your EC2 instance, replacing `<your-instance-IP>` with the actual IP address:
+     ```
+     ssh -i /path/to/your-key-pair.pem ec2-user@<your-instance-IP>
+     ```
 
 # Java and Tomcat Setup with WAR Deployment on EC2
 
