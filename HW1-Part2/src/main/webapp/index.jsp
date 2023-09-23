@@ -173,7 +173,8 @@
         <!-- Submit and cancel buttons -->
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary">Cancel</button>
-        <button type="button" class="btn btn-info">Back to Class page</button>
+        <a href="http://gmu-swe-645-aphill5.s3-website-us-east-1.amazonaws.com" class="btn btn-dark mr-3">Back to
+            Class Homepage</a>
     </form>
 </div>
 <script src="bootstrap/js/bootstrap.min.js"></script>
