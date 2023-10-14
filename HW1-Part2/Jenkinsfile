@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        JAVA_HOME = "/usr/bin/java"
+    }    
+
     tools {
         maven 'Maven 3.6.3'
         jdk 'Java 17'
