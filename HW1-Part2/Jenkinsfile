@@ -16,7 +16,14 @@ pipeline {
         stage('Build WAR') {
             steps {
                 dir('HW1-Part2') {
-                    sh 'mvn clean install'
+                     script {
+                        // Set JAVA_HOME explicitly before the Maven command
+                        env.JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'  // Ensure this path is correct
+                    }
+                    sh '''
+                        echo $JAVA_HOME
+                        mvn clean install
+                    '''
                 }
             }
         }
