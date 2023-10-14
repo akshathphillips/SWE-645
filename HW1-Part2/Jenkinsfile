@@ -7,11 +7,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/akshathphillips/SWE-645'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         git 'https://github.com/akshathphillips/SWE-645'
+        //     }
+        // }
 
         stage('Build WAR') {
             steps {
