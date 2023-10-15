@@ -65,7 +65,6 @@ pipeline {
                     // Use the DOCKER_TAG_NAME for deployment
                     sh "sed -i 's|akshathphillipspersonal/swe645:.*|akshathphillipspersonal/swe645:${env.DOCKER_TAG_NAME}|' HW1-Part2/deployment.yml"
                     sh "kubectl --kubeconfig ${kubeconfigPath} apply -f HW1-Part2/deployment.yml"
-                    sh "kubectl --kubeconfig ${kubeconfigPath} apply -f HW1-Part2/ingress.yml"                    
                 }
             }
         }
