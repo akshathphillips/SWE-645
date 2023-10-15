@@ -11,6 +11,7 @@ pipeline {
     }
     
     stages {
+        
         stage('Docker Login') {
             steps {
                 script {
@@ -20,14 +21,6 @@ pipeline {
                 }
             }
         }
-    }
-
-    stages {
-        // stage('Checkout') {
-        //     steps {
-        //         git 'https://github.com/akshathphillips/SWE-645'
-        //     }
-        // }
 
         stage('Build WAR') {
             steps {
