@@ -61,5 +61,18 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy to Kubernetes') {
+                steps {
+                    script {
+                        def kubeconfigPath = "/var/lib/jenkins/kubeconfig"
+    
+                        sh "sed -i 's|akshathphillipspersonal/swe645:.*|akshathphillipspersonal/swe645:latest|' HW1-Part2/deployment.yml"
+    
+                        sh "kubectl --kubeconfig ${kubeconfigPath} apply -f HW1-Part2/deployment.yml"
+                    }
+                }
+            }
+        }
     }
 }
