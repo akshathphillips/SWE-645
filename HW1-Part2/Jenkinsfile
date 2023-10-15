@@ -30,18 +30,20 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    def tagName = "v" + env.BUILD_NUMBER // using Jenkins build number as an example
-                    def dockerImageName = "akshathphillipspersonal/swe645:${tagName}"
+                dir('HW1-Part2') {
+                    script {
+                        def tagName = "v" + env.BUILD_NUMBER // using Jenkins build number as an example
+                        def dockerImageName = "akshathphillipspersonal/swe645:${tagName}"
+                        
+                  
+                        def dockerImage = docker.build(dockerImageName)
+                        
                     
-              
-                    def dockerImage = docker.build(dockerImageName)
-                    
-                
-                    env.DOCKER_TAG_NAME = tagName
+                        env.DOCKER_TAG_NAME = tagName
+                    }
                 }
             }
-          }
+        }
 
         stage('Push Docker Image') {
             steps {
