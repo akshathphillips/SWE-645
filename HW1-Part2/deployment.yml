@@ -16,7 +16,7 @@ spec:
       - name: hw2-container
         image: akshathphillipspersonal/swe645:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 
 ---
 apiVersion: v1
@@ -30,4 +30,8 @@ spec:
   ports:
     - protocol: TCP
       port: 8080
-      targetPort: 8080
+      targetPort: 80
+      name: http
+    - protocol: TCP
+      port: 443
+      name: https
