@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hw2-container
-        image: akshathphillipspersonal/swe645:latest
+        image: akshathphillipspersonal/swe645:v21
         ports:
         - containerPort: 80
 
