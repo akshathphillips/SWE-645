@@ -16,7 +16,7 @@ spec:
       - name: hw2-container
         image: akshathphillipspersonal/swe645:v21
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 
 ---
 apiVersion: v1
@@ -29,9 +29,6 @@ spec:
     app: hw2-app-label
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 80
+      port: 8080   # <-- This can remain the same. This is the port where you'd access the service from outside the cluster.
+      targetPort: 8080   # <-- This should be the same as your containerPort because this is where traffic will be forwarded to.
       name: http
-    - protocol: TCP
-      port: 443
-      name: https
