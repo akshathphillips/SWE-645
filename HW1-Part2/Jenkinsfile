@@ -25,9 +25,9 @@ pipeline {
         stage('Build WAR') {
             steps {
                 dir('HW1-Part2') {
-                     script {
+                    script {
                         // Set JAVA_HOME explicitly before the Maven command
-                        env.JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'  // Ensure this path is correct
+                        env.JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
                     }
                     sh '''
                         echo $JAVA_HOME
@@ -43,11 +43,7 @@ pipeline {
                     script {
                         def tagName = "v" + env.BUILD_NUMBER // using Jenkins build number as an example
                         def dockerImageName = "akshathphillipspersonal/swe645:${tagName}"
-                        
-                  
                         def dockerImage = docker.build(dockerImageName)
-                        
-                    
                         env.DOCKER_TAG_NAME = tagName
                     }
                 }
@@ -66,9 +62,8 @@ pipeline {
             steps {
                 script {
                     def kubeconfigPath = "/var/lib/jenkins/kubeconfig"
-
-                    sh "sed -i 's|akshathphillipspersonal/swe645:.*|akshathphillipspersonal/swe645:latest|' HW1-Part2/deployment.yml"
-
+                    // Use the DOCKER_TAG_NAME for deployment
+                    sh "sed -i 's|akshathphillipspersonal/swe645:.*|akshathphillipspersonal/swe645:${env.DOCKER_TAG_NAME}|' HW1-Part2/deployment.yml"
                     sh "kubectl --kubeconfig ${kubeconfigPath} apply -f HW1-Part2/deployment.yml"
                 }
             }
