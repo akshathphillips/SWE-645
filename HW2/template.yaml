@@ -1,0 +1,153 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: '3 EC2 instances with Docker installed'
+
+Resources:
+
+  SWE645SecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: 'Security Group for Rancher EC2 instances'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: '0.0.0.0/0'
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: '0.0.0.0/0'
+        - IpProtocol: tcp
+          FromPort: '443'
+          ToPort: '443'
+          CidrIp: '0.0.0.0/0'
+        - IpProtocol: tcp
+          FromPort: '8080'
+          ToPort: '8080'
+          CidrIp: '0.0.0.0/0'
+
+  ElasticIP1:
+    Type: 'AWS::EC2::EIP'
+
+  ElasticIP2:
+    Type: 'AWS::EC2::EIP'
+
+  ElasticIP3:
+    Type: 'AWS::EC2::EIP'
+
+  EC2Instance1:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      Tags:
+        - Key: 'Name'
+          Value: 'Rancher'
+      InstanceType: 't3.large'
+      ImageId: 'ami-0261755bbcb8c4a84'
+      KeyName: 'hw3'
+      SecurityGroups:
+        - !Ref SWE645SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: '/dev/sda1'
+          Ebs:
+            VolumeSize: 30  # Updated root volume size to 30 gigabytes
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash
+            # Install Docker
+            curl https://releases.rancher.com/install-docker/20.10.sh | sh
+            # Start Docker
+            systemctl start docker
+            systemctl enable docker
+
+  EIPAssociation1:
+    Type: 'AWS::EC2::EIPAssociation'
+    Properties:
+      InstanceId: !Ref EC2Instance1
+      EIP: !Ref ElasticIP1
+  
+  EC2Instance2:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      Tags:
+        - Key: 'Name'
+          Value: 'k8s'
+      InstanceType: 't3.large'
+      ImageId: 'ami-0261755bbcb8c4a84'
+      KeyName: 'hw3'
+      SecurityGroups:
+        - !Ref SWE645SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: '/dev/sda1'
+          Ebs:
+            VolumeSize: 30  # Updated root volume size to 30 gigabytes
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash
+            # Install Docker 20.10 without prompts
+            sudo apt-get update
+            sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+            sudo apt-get update
+            sudo apt-get install -y docker-ce=5:20.10.0~3-0~ubuntu-$(lsb_release -cs)
+            sudo systemctl enable docker
+            sudo systemctl start docker
+
+  EIPAssociation2:
+    Type: 'AWS::EC2::EIPAssociation'
+    Properties:
+      InstanceId: !Ref EC2Instance2
+      EIP: !Ref ElasticIP2
+  
+  EC2Instance3:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      Tags:
+        - Key: 'Name'
+          Value: 'Workstation'
+      InstanceType: 't3.large'
+      ImageId: 'ami-0261755bbcb8c4a84'
+      KeyName: 'hw3'
+      SecurityGroups:
+        - !Ref SWE645SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: '/dev/sda1'
+          Ebs:
+            VolumeSize: 30  # Updated root volume size to 30 gigabytes
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash
+            # Install Docker 20.10 without prompts
+            sudo apt-get update
+            sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+            sudo apt-get update
+            sudo apt-get install -y docker-ce=5:20.10.0~3-0~ubuntu-$(lsb_release -cs)
+            sudo systemctl enable docker
+            sudo systemctl start docker
+
+            # Install kubectl
+            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+            chmod +x kubectl
+            sudo mv kubectl /usr/local/bin/
+
+            # Install Jenkins LTS
+            sudo apt update
+            sudo apt install -y fontconfig openjdk-17-jre
+            sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+            echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+            sudo apt-get update
+            sudo apt-get -y install jenkins
+
+            # Start Jenkins
+            sudo systemctl start jenkins
+            sudo systemctl enable jenkins
+
+  EIPAssociation3:
+    Type: 'AWS::EC2::EIPAssociation'
+    Properties:
+      InstanceId: !Ref EC2Instance3
+      EIP: !Ref ElasticIP3
