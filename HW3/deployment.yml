@@ -13,11 +13,10 @@ spec:
         app: hw3-app-label
     spec:
       containers:
-      - name: hw3-container
-        image: akshathphillipspersonal/swe645-hw3:v21
-        ports:
-        - containerPort: 8080
-
+        - name: hw3-container
+          image: akshathphillipspersonal/swe645-hw3:v21
+          ports:
+            - containerPort: 8081  # Updated to 8081
 ---
 apiVersion: v1
 kind: Service
@@ -29,6 +28,6 @@ spec:
     app: hw3-app-label
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8081  # Updated to 8081
+      targetPort: 8081  # Updated to 8081
       name: http
