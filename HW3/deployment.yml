@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hw3-container
-          image: akshathphillipspersonal/swe645-hw3:v21
+          image: akshathphillipspersonal/swe645-hw3:v3
           ports:
             - containerPort: 8081  # Updated to 8081
 ---
