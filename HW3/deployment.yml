@@ -1,33 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hw3-cluster-deployment-deploy
+  name: spring-app-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: hw3-app-label
+      app: spring-app
   template:
     metadata:
       labels:
-        app: hw3-app-label
+        app: spring-app
     spec:
       containers:
-        - name: hw3-container
-          image: akshathphillipspersonal/swe645-hw3:v5
+        - name: spring-app-container
+          image: akshathphillipspersonal/swe645-hw3:v6 # Your Spring app image
           ports:
-            - containerPort: 8081  # Updated to 8081
+            - containerPort: 8081 # Port your Spring app listens on
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: hw3-cluster-deployment
+  name: spring-app-service
 spec:
   type: NodePort
   selector:
-    app: hw3-app-label
+    app: spring-app
   ports:
     - protocol: TCP
-      port: 8081  # Updated to 8081
-      targetPort: 8081  # Updated to 8081
-      name: http
+      port: 8081 # Port you want to expose externally (on the Node)
+      targetPort: 8081 # Port your Spring app listens on
