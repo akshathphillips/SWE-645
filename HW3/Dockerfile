@@ -1,5 +1,5 @@
 # Use the official OpenJDK base image with the latest Java
-FROM openjdk:latest
+FROM --platform=linux/amd64 openjdk:latest
 
 # Set the working directory inside the container
 WORKDIR /app
